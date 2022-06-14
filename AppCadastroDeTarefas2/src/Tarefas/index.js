@@ -1,5 +1,5 @@
 import React, {Component, useEffect, useState} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, FlatList, ActivityIndicator, Button} from 'react-native';
+import {SafeAreaView, View, Text, StyleSheet, TouchableOpacity, FlatList, ActivityIndicator, Button, Pressable} from 'react-native';
 import api from '../services/api';
 import Card from '../components/Card';
 import { useNavigation } from '@react-navigation/native';
@@ -27,13 +27,18 @@ export default function Tarefas() {
   if(loading){
     return(
       <View style={{alignItems: 'center', justifyContent: 'center', flex:1}}>
-        <ActivityIndicator color="#09A6FF" size={40}/>
+        <ActivityIndicator color="#8EA604" size={40}/>
       </View>
     )
   }else{
     return(
-      <View style={styles.container}>
-        <Button title="Incluir" onPress={irFormulario}/>
+      <SafeAreaView>
+        
+        <View style={{alignItems: 'center', justifyContent: 'center'}}>
+        <Pressable style={styles.buttonIncluir}  onPress={irFormulario}>
+        <Text style={{fontSize:20, fontWeight:'bold', color:'white'}}>Incluir Tarefa</Text>
+        </Pressable>
+        </View>
  
         <FlatList
         data={tarefas}
@@ -41,15 +46,16 @@ export default function Tarefas() {
         renderItem={ ({item}) => <Card data={item} funcCarregarTarefas={carregarTarefas} /> }
         />
  
-      </View>
+      </SafeAreaView>
     );
   }
 }
  
 const styles = StyleSheet.create({
+
   card:{
     shadowColor: '#000',
-    backgroundColor: '#FFF',
+    //backgroundColor: '#dde1b3',
     shadowOffset: {width:0, height: 1},
     shadowOpacity: 0.8,
     margin: 15,
@@ -65,6 +71,16 @@ const styles = StyleSheet.create({
     fontSize: 10,
     padding: 15,
   },
+  buttonIncluir: {
+    margin: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 5,
+    padding: 10,
+    width: 150,
+    backgroundColor: '#8EA604',
+  },
+
   buttonEditar: {
     borderRadius: 5,
     marginVertical: 20,

@@ -1,5 +1,5 @@
 import React, {Component, useState} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {SafeAreaView, ScrollView, View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import api from '../../services/api';
 import { useNavigation } from '@react-navigation/native';
  
@@ -29,11 +29,11 @@ function Card({data, funcCarregarTarefas}){
         <Text style={styles.descricao}>{description}</Text>
  
         <TouchableOpacity style={styles.buttonEditar} onPress={irFormulario}>
-          <Text>Editar</Text>
+          <Text style={{fontSize:20, color: 'white', textAlign: 'center', fontWeight: 'bold'}}>Editar</Text>
         </TouchableOpacity>
  
         <TouchableOpacity style={styles.buttonExcluir} onPress={excluirTarefa}>
-          <Text>Excluir</Text>
+          <Text style={{fontSize:20, color: 'white', textAlign: 'center', fontWeight: 'bold'}}>Excluir</Text>
         </TouchableOpacity>
       </View>
  
@@ -44,40 +44,42 @@ function Card({data, funcCarregarTarefas}){
 const styles = StyleSheet.create({
   card:{
     shadowColor: '#000',
-    backgroundColor: '#FFF',
+    backgroundColor: '#cbd28e',
     shadowOffset: {width:0, height: 1},
-    shadowOpacity: 0.8,
+    shadowOpacity: 0.5,
     margin: 15,
+    padding: 15, 
     shadowRadius: 5,
     borderRadius: 5,
     elevation: 3,
   },
   titulo:{
-    fontSize: 18,
-    padding: 15,
+    textAlign: 'center',
+    fontSize: 25,
+    fontWeight: 'bold',
+    padding: 5,
   },
   descricao:{
-    fontSize: 10,
+    fontSize: 20,
     padding: 15,
   },
   buttonEditar: {
     borderRadius: 5,
-    marginVertical: 20,
-    alignSelf: 'flex-start',
-    backgroundColor: "yellow",
-    marginVertical: 0,
-    marginLeft: 10
+    alignSelf: 'center',
+    backgroundColor: "#8EA604",
+    marginBottom: 10,
+    width:85,
+    paddingHorizontal: 10,
+    paddingVertical: 5
   },
   buttonExcluir: {
     borderRadius: 5,
-    marginVertical: 20,
-    alignSelf: 'flex-start',
-    backgroundColor: "gray",
-    marginVertical: 0,
-    marginLeft: 10,
-    backgroundColor: "tomato",
-    marginTop: 10,
-    marginBottom: 10
+    alignSelf: 'center',
+    backgroundColor: "#8C1C13",
+    marginBottom: 10,
+    width: 85,
+    paddingHorizontal: 10,
+    paddingVertical: 5
   },
 });
  
